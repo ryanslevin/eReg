@@ -7,8 +7,8 @@ import com.ryanslevin.ereg.entity.User;
 public interface UserDao {
 
     public List<User> getUsers();
-    
-    public void saveUser(User user);
+
+	public void addUser(User user);
 
 
 }

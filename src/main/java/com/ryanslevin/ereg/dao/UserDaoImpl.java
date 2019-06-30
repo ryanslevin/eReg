@@ -30,7 +30,13 @@ public class UserDaoImpl implements UserDao {
 
     }
 
-    public void saveUser(User user) {
+    public void addUser(User user) {
+
+        Session session = entityManager.unwrap(Session.class);
+
+        session.saveOrUpdate(user);
+
+
 
     }
 
