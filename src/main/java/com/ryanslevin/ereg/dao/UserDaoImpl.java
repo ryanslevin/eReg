@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UserDaoImpl {
+public class UserDaoImpl implements UserDao {
 
     @Autowired
     EntityManager entityManager;
@@ -22,11 +22,15 @@ public class UserDaoImpl {
 
         Session session = entityManager.unwrap(Session.class);
 
-        Query getUsers = session.createQuery("from Users", User.class);
+        Query getUsers = session.createQuery("from User", User.class);
 
         List<User> users = getUsers.getResultList();
 
         return users;
+
+    }
+
+    public void saveUser(User user) {
 
     }
 

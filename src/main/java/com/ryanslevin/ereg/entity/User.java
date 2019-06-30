@@ -66,6 +66,10 @@ public class User {
         this.gender = gender;
     }
 
+    public User() {
+        
+    }
+
     public User(String id, String firstName, String lastName, Date birthDate, String gender) {
         this.id = id;
         this.firstName = firstName;

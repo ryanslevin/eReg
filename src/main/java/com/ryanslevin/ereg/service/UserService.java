@@ -1,14 +1,11 @@
-package com.ryanslevin.ereg.dao;
+package com.ryanslevin.ereg.service;
 
 import java.util.List;
 
 import com.ryanslevin.ereg.entity.User;
 
-public interface UserDao {
+public interface UserService {
 
     public List<User> getUsers();
-    
-    public void saveUser(User user);
-
 
 }
