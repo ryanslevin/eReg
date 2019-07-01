@@ -11,6 +11,7 @@ import org.hibernate.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public class UserDaoImpl implements UserDao {
@@ -18,6 +19,8 @@ public class UserDaoImpl implements UserDao {
     @Autowired
     EntityManager entityManager;
 
+    @Override
+    @Transactional
     public List<User> getUsers() {
 
         // Create session by unwrapping autowired entityManager
@@ -34,6 +37,8 @@ public class UserDaoImpl implements UserDao {
 
     }
 
+    @Override
+    @Transactional
     public User getUser(int id) {
 
             // Create session by unwrapping autowired entityManager
@@ -46,25 +51,29 @@ public class UserDaoImpl implements UserDao {
 
             return user;
 
-
     }
 
-
+    @Override
+    @Transactional   
     public void addUser(User user) {
 
         // Create session by unwrapping autowired entityManager
         Session session = entityManager.unwrap(Session.class);
 
-        /* Save the user in the database, or update if they already exist.
+        // Save the user in the database
+        session.save(user);
 
-        This should potentially just be update, as users should not be
-        overwritten using this method.
+    }
 
-        */
+    @Override
+    @Transactional
+    public void updateUser(User user) {
 
-        session.saveOrUpdate(user);
+        // Create session by unwrapping autowired entityManager
+        Session session = entityManager.unwrap(Session.class);
 
-
+        // Update the user in the db
+        session.update(user);
 
     }
 

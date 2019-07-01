@@ -78,6 +78,14 @@ public class User {
         this.gender = gender;
     }
 
+    @Override
+    public String toString() {
+        return "User [birthDate=" + birthDate + ", firstName=" + firstName + ", gender=" + gender + ", id=" + id
+                + ", lastName=" + lastName + "]";
+    }
+
+    
+
     
 
 

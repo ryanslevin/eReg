@@ -14,12 +14,14 @@ public class UserServiceImpl implements UserService {
 @Autowired
 UserDao userDao;
 
+    @Override
     public List<User> getUsers() {
 
         return userDao.getUsers();
 
     }
 
+    @Override
     public User getUser(int id) {
 
         return userDao.getUser(id);
@@ -30,6 +32,14 @@ UserDao userDao;
     public void addUser(User user) {
         userDao.addUser(user);
     }
+
+    @Override
+    public void updateUser(User user) {
+        userDao.updateUser(user);
+
+    }
+
+    
 
 
 

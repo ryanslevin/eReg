@@ -8,6 +8,7 @@ import com.ryanslevin.ereg.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,6 +24,7 @@ public class UserControllerImpl implements UserController {
     UserService userService;
 
     // API endpoint that returns all users
+    // Endpoint: http://localhost:8080/users
     @GetMapping("/users")
     public List<User> getUsers() {
 
@@ -40,10 +42,19 @@ public class UserControllerImpl implements UserController {
     }
 
     // API endpoint that creates a user
+    // Example endpoint: http://localhost:8080/user
     @PostMapping("/user")
     public void addUser(@RequestBody User user) {
 
         userService.addUser(user);
+
+    }
+
+    // API endpoint to update a user
+    @PutMapping("/user")
+    public void updateUser(@RequestBody User user) {
+
+        userService.updateUser(user);
 
     }
 
