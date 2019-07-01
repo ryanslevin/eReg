@@ -20,6 +20,12 @@ UserDao userDao;
 
     }
 
+    public User getUser(int id) {
+
+        return userDao.getUser(id);
+
+    }
+
     @Override
     public void addUser(User user) {
         userDao.addUser(user);
