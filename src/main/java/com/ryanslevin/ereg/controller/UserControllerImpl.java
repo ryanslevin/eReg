@@ -6,6 +6,7 @@ import com.ryanslevin.ereg.entity.User;
 import com.ryanslevin.ereg.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -53,10 +54,13 @@ public class UserControllerImpl implements UserController {
     // API endpoint to update a user
     @PutMapping("/user")
     public void updateUser(@RequestBody User user) {
-
         userService.updateUser(user);
-
     }
 
+    // API endpoint to update a user
+    @DeleteMapping("/user")
+    public void deleteUser(@RequestParam int id) {
+        userService.deleteUser(id);
+    }
 
 }

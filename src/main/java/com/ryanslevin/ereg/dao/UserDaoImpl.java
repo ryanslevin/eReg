@@ -47,6 +47,7 @@ public class UserDaoImpl implements UserDao {
             // Query to request row from User table where the id = param
             Query getUser = session.createQuery("from User where id = "+id, User.class);
 
+            // Populate user with the data from query
             User user = (User) getUser.getSingleResult();
 
             return user;
@@ -74,6 +75,24 @@ public class UserDaoImpl implements UserDao {
 
         // Update the user in the db
         session.update(user);
+
+    }
+
+    @Override
+    @Transactional
+    public void deleteUser(int id) {
+
+        // Create session by unwrapping autowired entityManager
+        Session session = entityManager.unwrap(Session.class);
+
+        // Query to request row from User table where the id = param
+        Query getUser = session.createQuery("from User where id = "+id, User.class);
+
+        // Populate user object with result from query
+        User user = (User) getUser.getSingleResult();
+
+        // Execute delete on user
+        session.delete(user);
 
     }
 

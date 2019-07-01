@@ -16,16 +16,12 @@ UserDao userDao;
 
     @Override
     public List<User> getUsers() {
-
         return userDao.getUsers();
-
     }
 
     @Override
     public User getUser(int id) {
-
         return userDao.getUser(id);
-
     }
 
     @Override
@@ -36,7 +32,11 @@ UserDao userDao;
     @Override
     public void updateUser(User user) {
         userDao.updateUser(user);
+    }
 
+    @Override
+    public void deleteUser(int id) {
+        userDao.deleteUser(id);
     }
 
     
