@@ -16,7 +16,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          MAKE A FRONT END
         </a>
       </header>
     </div>
