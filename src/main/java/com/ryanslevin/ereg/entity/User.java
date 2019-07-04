@@ -84,12 +84,4 @@ public class User {
                 + ", lastName=" + lastName + "]";
     }
 
-    
-
-    
-
-
-
-
-
 }

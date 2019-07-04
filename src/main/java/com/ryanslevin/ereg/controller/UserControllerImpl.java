@@ -25,7 +25,8 @@ public class UserControllerImpl implements UserController {
     UserService userService;
 
     // API endpoint that returns all users
-    // Endpoint: http://localhost:8080/users
+    // Endpoint: http://localhost:8080/
+    @Override
     @GetMapping("/users")
     public List<User> getUsers() {
 
@@ -35,6 +36,7 @@ public class UserControllerImpl implements UserController {
 
     // API endpoint that returns a single user
     // Example endpoint: http://localhost:8080/api/user?id=1
+    @Override
     @GetMapping("/user")
     public User getUser(@RequestParam int id) {
         
@@ -44,6 +46,7 @@ public class UserControllerImpl implements UserController {
 
     // API endpoint that creates a user
     // Example endpoint: http://localhost:8080/user
+    @Override
     @PostMapping("/user")
     public void addUser(@RequestBody User user) {
 
@@ -52,12 +55,14 @@ public class UserControllerImpl implements UserController {
     }
 
     // API endpoint to update a user
+    @Override
     @PutMapping("/user")
     public void updateUser(@RequestBody User user) {
         userService.updateUser(user);
     }
 
     // API endpoint to update a user
+    @Override
     @DeleteMapping("/user")
     public void deleteUser(@RequestParam int id) {
         userService.deleteUser(id);

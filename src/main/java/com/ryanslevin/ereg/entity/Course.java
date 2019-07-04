@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="courses")
-public class Courses {
+public class Course {
 
     @Id
     @Column(name="id")
@@ -40,12 +40,11 @@ public class Courses {
     @Column(name="instructor")
     private String instructor;
 
-    public Courses() {
+    public Course() {
 
     }
 
-
-    public Courses(String name, Date startDate, Date endDate, Time startTime, Time endTime, String location,
+    public Course(String name, Date startDate, Date endDate, Time startTime, Time endTime, String location,
             String instructor) {
         this.name = name;
         this.startDate = startDate;
@@ -56,11 +55,9 @@ public class Courses {
         this.instructor = instructor;
     }
 
-    
-
     @Override
     public String toString() {
-        return "Courses [endDate=" + endDate + ", endTime=" + endTime + ", id=" + id + ", instructor=" + instructor
+        return "Course [endDate=" + endDate + ", endTime=" + endTime + ", id=" + id + ", instructor=" + instructor
                 + ", location=" + location + ", name=" + name + ", startDate=" + startDate + ", startTime=" + startTime
                 + "]";
     }
@@ -124,14 +121,5 @@ public class Courses {
     public void setInstructor(String instructor) {
         this.instructor = instructor;
     }
-
-    
-
-    
-
-    
-
-
-
 
 }
