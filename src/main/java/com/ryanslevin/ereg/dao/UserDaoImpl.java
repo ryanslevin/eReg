@@ -41,16 +41,16 @@ public class UserDaoImpl implements UserDao {
     @Transactional
     public User getUser(int id) {
 
-            // Create session by unwrapping autowired entityManager
-            Session session = entityManager.unwrap(Session.class);
+        // Create session by unwrapping autowired entityManager
+        Session session = entityManager.unwrap(Session.class);
 
-            // Query to request row from User table where the id = param
-            Query getUser = session.createQuery("from User where id = "+id, User.class);
+        // Query to request row from User table where the id = param
+        Query getUser = session.createQuery("from User where id = "+id, User.class);
 
-            // Populate user with the data from query
-            User user = (User) getUser.getSingleResult();
+        // Populate user with the data from query            
+        User user = (User) getUser.getSingleResult();
 
-            return user;
+        return user;
 
     }
 

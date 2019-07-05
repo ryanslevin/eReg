@@ -10,7 +10,9 @@ import com.ryanslevin.ereg.entity.Course;
 
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class CourseDaoImpl implements CourseDao {
 
     @Autowired
@@ -24,7 +26,7 @@ public class CourseDaoImpl implements CourseDao {
         Session session = entityManager.unwrap(Session.class);
 
         //query to execute against db
-        Query query = session.createQuery("from Courses", Course.class);
+        Query query = session.createQuery("from Course", Course.class);
 
         //populate list with data from query
         List<Course> courses = query.getResultList();
@@ -40,7 +42,7 @@ public class CourseDaoImpl implements CourseDao {
         Session session = entityManager.unwrap(Session.class);
 
         // Query to execute against the courses db
-        Query query = session.createQuery("from Courses where id ="+id, Course.class);
+        Query query = session.createQuery("from Course where id ="+id, Course.class);
 
         Course course = (Course) query.getSingleResult();
 
@@ -80,7 +82,7 @@ public class CourseDaoImpl implements CourseDao {
         Session session = entityManager.unwrap(Session.class);
 
         // Query to get course from db based on id
-        Query query = session.createQuery("from Courses where id ="+id, Course.class);
+        Query query = session.createQuery("from Course where id ="+id, Course.class);
 
         // Execute query and assign single result to object
         Course course = (Course) query.getSingleResult();
