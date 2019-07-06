@@ -41,6 +41,52 @@ public class Registration {
         this.cancelledDateTime = cancelledDateTime;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public Date getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(Date dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public boolean isCancelled() {
+        return cancelled;
+    }
+
+    public void setCancelled(boolean cancelled) {
+        this.cancelled = cancelled;
+    }
+
+    public Date getCancelledDateTime() {
+        return cancelledDateTime;
+    }
+
+    public void setCancelledDateTime(Date cancelledDateTime) {
+        this.cancelledDateTime = cancelledDateTime;
+    }
+
+    
+
 
     
 
