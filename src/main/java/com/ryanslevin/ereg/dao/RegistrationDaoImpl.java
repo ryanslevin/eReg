@@ -1,6 +1,9 @@
 package com.ryanslevin.ereg.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import com.ryanslevin.ereg.entity.Registration;
@@ -37,13 +40,16 @@ public class RegistrationDaoImpl implements RegistrationDao {
     }
 
     @Override
-    public void transfer(Registration registration) {
-
-        //Get session
+    public List<Registration> getRegistrations() {
+        
+        // Get session
         Session session = entityManager.unwrap(Session.class);
 
-        session.update(registration);
+        Query query = session.createQuery("from Registration", Registration.class);
 
+        List<Registration> registrations = query.getResultList();
+
+        return registrations;
     }
     
 }

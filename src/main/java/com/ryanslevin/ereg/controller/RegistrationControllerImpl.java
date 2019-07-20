@@ -1,15 +1,19 @@
 package com.ryanslevin.ereg.controller;
 
+import java.util.List;
+
 import com.ryanslevin.ereg.entity.Course;
 import com.ryanslevin.ereg.entity.Registration;
 import com.ryanslevin.ereg.entity.User;
 import com.ryanslevin.ereg.service.RegistrationService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -20,15 +24,15 @@ public class RegistrationControllerImpl implements RegistrationController {
     RegistrationService registrationService;
 
     @Override
-    @PutMapping("/register")
-    public void register(@RequestBody Registration registration) {
+    @PostMapping("/register")
+    public void register(@RequestParam int courseId, @RequestParam int userId) {
 
-        registrationService.register(registration);
+        registrationService.register(courseId, userId);
 
     }
 
     @Override
-    @PostMapping("/cancel")
+    @PutMapping("/cancel")
     public void cancel(@RequestBody Registration registration) {
 
         registrationService.cancel(registration);
@@ -36,11 +40,10 @@ public class RegistrationControllerImpl implements RegistrationController {
     }
 
     @Override
-    @PostMapping("/transfer")
-    public void transfer(@RequestBody Registration registration, Course course) {
-
-        registrationService.transfer(registration, course);
-
+    @GetMapping("/registrations")
+    public List<Registration> getRegistrations() {
+        
+        return registrationService.getRegistrations();
     }
     
 

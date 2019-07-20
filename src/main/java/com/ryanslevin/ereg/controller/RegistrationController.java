@@ -1,15 +1,17 @@
 package com.ryanslevin.ereg.controller;
 
+import java.util.List;
+
 import com.ryanslevin.ereg.entity.Course;
 import com.ryanslevin.ereg.entity.Registration;
 import com.ryanslevin.ereg.entity.User;
 
 public interface RegistrationController {
 
-    public void register(Registration regsitration);
+    public List<Registration> getRegistrations();
+
+    public void register(int courseId, int userId);
 
     public void cancel(Registration registration);
-
-    public void transfer(Registration registration, Course course);
 
 }

@@ -42,7 +42,7 @@ public class CourseControllerImpl implements CourseController {
     // API endpoint that adds a course to the db
     // Endpoint: http://localhost:8080/api/course
     @Override
-    @PutMapping("/course")
+    @PostMapping("/course")
     public void addCourse(@RequestBody Course course) {
         courseService.addCourse(course);
 
@@ -52,7 +52,7 @@ public class CourseControllerImpl implements CourseController {
     // API endpoint that updates a course in the db where course in db = course param
     // Endpoint: http://localhost:8080/api/course    
     @Override
-    @PostMapping("/course")
+    @PutMapping("/course")
     public void updateCourse(@RequestBody Course course) {
         courseService.updateCourse(course);
 

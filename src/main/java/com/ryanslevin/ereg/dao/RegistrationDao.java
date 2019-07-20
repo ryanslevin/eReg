@@ -1,13 +1,15 @@
 package com.ryanslevin.ereg.dao;
 
+import java.util.List;
+
 import com.ryanslevin.ereg.entity.Registration;
 
 public interface RegistrationDao {
 
-	void register(Registration registration);
+	public void register(Registration registration);
 
-	void cancel(Registration registration);
+	public void cancel(Registration registration);
 
-	void transfer(Registration registration);
+	public List<Registration> getRegistrations();
 
 }

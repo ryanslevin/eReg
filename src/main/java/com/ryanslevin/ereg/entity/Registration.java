@@ -1,13 +1,18 @@
 package com.ryanslevin.ereg.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.ryanslevin.ereg.entity.Course;
+import com.ryanslevin.ereg.entity.User;
 
 @Entity
 @Table(name="registrations")
@@ -18,13 +23,15 @@ public class Registration {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
 
-    @Column(name="user_id", nullable = false)
+    @ManyToOne(targetEntity = User.class)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     User user;
 
-    @Column(name="course_id", nullable = false)
+    @ManyToOne(targetEntity = Course.class)
+    @JoinColumn(name = "course_id", referencedColumnName = "id")
     Course course;
 
-    @Column(name="date_time", nullable = false)
+    @Column(name="registered_date_time", nullable = false)
     Date dateTime;
 
     @Column(name="cancelled", nullable = false)
@@ -33,12 +40,16 @@ public class Registration {
     @Column(name="cancelled_date_time")
     Date cancelledDateTime;
 
-    public Registration(User user, Course course, Date dateTime, boolean cancelled, Date cancelledDateTime) {
+    public Registration() {
+        
+    }
+
+    public Registration(User user, Course course) {
         this.user = user;
         this.course = course;
-        this.dateTime = dateTime;
-        this.cancelled = cancelled;
-        this.cancelledDateTime = cancelledDateTime;
+        this.dateTime = new Date();
+        this.cancelled = false;
+        this.cancelledDateTime = null;
     }
 
     public int getId() {
@@ -84,11 +95,5 @@ public class Registration {
     public void setCancelledDateTime(Date cancelledDateTime) {
         this.cancelledDateTime = cancelledDateTime;
     }
-
-    
-
-
-    
-
     
 }
