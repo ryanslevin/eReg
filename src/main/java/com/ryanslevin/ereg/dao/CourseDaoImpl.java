@@ -44,6 +44,7 @@ public class CourseDaoImpl implements CourseDao {
         // Query to execute against the courses db
         Query query = session.createQuery("from Course where id ="+id, Course.class);
 
+        // Assign single result from query to object, cast the object to Course
         Course course = (Course) query.getSingleResult();
 
         return course;
@@ -69,7 +70,7 @@ public class CourseDaoImpl implements CourseDao {
         // Unwrap session from the EntityManager
         Session session = entityManager.unwrap(Session.class);
 
-        // Upodate the course in the db
+        // Update the course in the db
         session.update(course);
 
     }
