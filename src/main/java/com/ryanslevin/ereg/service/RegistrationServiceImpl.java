@@ -63,4 +63,9 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     }
 
+    @Override
+    public Registration getRegistration(int id) {
+        return registrationDao.getRegistration(id);
+    }
+
 }

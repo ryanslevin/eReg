@@ -14,4 +14,6 @@ public interface RegistrationController {
 
     public void cancel(Registration registration);
 
+    public void getRegistration(int registrationId);
+
 }

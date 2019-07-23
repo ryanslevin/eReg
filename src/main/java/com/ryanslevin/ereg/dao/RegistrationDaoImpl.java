@@ -51,5 +51,19 @@ public class RegistrationDaoImpl implements RegistrationDao {
 
         return registrations;
     }
+
+    @Override
+    public Registration getRegistration(int id) {
+        
+        //Get session
+        Session session = entityManager.unwrap(Session.class);
+
+        Query query = session.createQuery("from Registration where id = "+id, Registration.class);
+
+        Registration registration = (Registration) query.getSingleResult();
+
+        return registration;
+
+    }
     
 }

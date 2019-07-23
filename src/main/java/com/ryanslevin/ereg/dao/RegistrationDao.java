@@ -12,4 +12,6 @@ public interface RegistrationDao {
 
 	public List<Registration> getRegistrations();
 
+	public Registration getRegistration(int id);
+
 }

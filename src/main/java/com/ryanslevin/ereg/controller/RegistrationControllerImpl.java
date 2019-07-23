@@ -45,6 +45,14 @@ public class RegistrationControllerImpl implements RegistrationController {
         
         return registrationService.getRegistrations();
     }
+
+    @Override
+    @GetMapping("/registration")
+    public void getRegistration(@RequestParam int id) {
+
+        return registrationService.getRegistration(id);
+
+    }
     
 
 
