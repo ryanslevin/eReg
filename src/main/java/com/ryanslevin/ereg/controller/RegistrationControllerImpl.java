@@ -23,6 +23,9 @@ public class RegistrationControllerImpl implements RegistrationController {
     @Autowired
     RegistrationService registrationService;
 
+
+    // API endpoint that takes two int params (courseId, userId) and creates a registration
+    // Endpoint: http://localhost:8080/api/registration/register?courseId=n&userId=n
     @Override
     @PostMapping("/register")
     public void register(@RequestParam int courseId, @RequestParam int userId) {
@@ -31,6 +34,8 @@ public class RegistrationControllerImpl implements RegistrationController {
 
     }
 
+    // API endpoint that cancels a course, takes a Registration object as RequestBody
+    // Endpoint: http://localhost:8080/api/registration/cancel
     @Override
     @PutMapping("/cancel")
     public void cancel(@RequestBody Registration registration) {
@@ -39,6 +44,8 @@ public class RegistrationControllerImpl implements RegistrationController {
 
     }
 
+    // API endpoint that returns all registrations
+    // Endpoint: http://localhost:8080/api/registration/registrations
     @Override
     @GetMapping("/registrations")
     public List<Registration> getRegistrations() {
@@ -46,9 +53,11 @@ public class RegistrationControllerImpl implements RegistrationController {
         return registrationService.getRegistrations();
     }
 
+    // API endpoint that returns registration where id = n
+    // Endpoint: http://localhost:8080/api/registration/registration?id=n
     @Override
     @GetMapping("/registration")
-    public void getRegistration(@RequestParam int id) {
+    public Registration getRegistration(@RequestParam int id) {
 
         return registrationService.getRegistration(id);
 
