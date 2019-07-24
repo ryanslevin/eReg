@@ -6,6 +6,7 @@ import com.ryanslevin.ereg.entity.Course;
 import com.ryanslevin.ereg.service.CourseService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,12 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:3000")
 public class CourseControllerImpl implements CourseController {
 
     @Autowired
     CourseService courseService;
 
-    // API endpoint that returns all courses
+    // API endpoint that returns all coures
     // Endpoint: http://localhost:8080/api/courses
     @Override
     @GetMapping("/courses")
