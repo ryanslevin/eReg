@@ -4,9 +4,6 @@ import java.util.List;
 
 import com.ryanslevin.ereg.entity.User;
 
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-
 public interface UserController {
     
     public List<User> getUsers();

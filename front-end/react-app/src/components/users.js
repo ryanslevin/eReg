@@ -9,7 +9,9 @@ const Users = ({ users }) => {
             {users.map((user) => (
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">{user.firstName}</h5>
+                    <h5 class="card-title">{user.firstName} {user.lastName}</h5>
+                    <p>User ID: {user.id}</p>
+                    <p>Birth date: {user.birthDate} Gender: {user.gender}</p>
                 </div>
             </div>
     ))}

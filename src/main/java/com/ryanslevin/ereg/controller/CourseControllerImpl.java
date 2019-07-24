@@ -50,7 +50,6 @@ public class CourseControllerImpl implements CourseController {
 
     }
 
-
     // API endpoint that updates a course in the db where course in db = course param
     // Endpoint: http://localhost:8080/api/course    
     @Override

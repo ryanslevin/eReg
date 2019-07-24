@@ -2,9 +2,7 @@ package com.ryanslevin.ereg.controller;
 
 import java.util.List;
 
-import com.ryanslevin.ereg.entity.Course;
 import com.ryanslevin.ereg.entity.Registration;
-import com.ryanslevin.ereg.entity.User;
 import com.ryanslevin.ereg.service.RegistrationService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +22,6 @@ public class RegistrationControllerImpl implements RegistrationController {
 
     @Autowired
     RegistrationService registrationService;
-
 
     // API endpoint that takes two int params (courseId, userId) and creates a registration
     // Endpoint: http://localhost:8080/api/registration/register?courseId=n&userId=n
@@ -64,9 +61,5 @@ public class RegistrationControllerImpl implements RegistrationController {
         return registrationService.getRegistration(id);
 
     }
-    
-
-
-
 
 }
