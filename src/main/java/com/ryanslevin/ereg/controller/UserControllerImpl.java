@@ -40,6 +40,7 @@ public class UserControllerImpl implements UserController {
     // Example endpoint: http://localhost:8080/api/user?id=1
     @Override
     @GetMapping("/user")
+    @CrossOrigin(origins = "http://localhost:3000")
     public User getUser(@RequestParam int id) {
         
         return userService.getUser(id);
