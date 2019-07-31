@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import User from './Components/User/User'
+import Course from './Components/Course/Course'
 import './App.css'
 
 class App extends Component {
@@ -7,7 +8,10 @@ class App extends Component {
   state = {
     userSearchId: null,
     user: null,
-    userFound: false
+    userFound: false,
+    courseSearchId: null,
+    course: null,
+    courseFound: false
   }
 
   searchUser = () => {
@@ -19,8 +23,23 @@ class App extends Component {
       .catch(console.log)
   }
 
-  handleSearchChange(event) {
+  searchCourse = () => {
+    fetch('http://localhost:8080/api/course?id=' + this.state.courseSearchId)
+      .then(res => res.json())
+      .then((data) => {
+        this.setState({ course: data, courseFound: true })
+      })
+      .catch(console.log)
+  }
+
+
+
+  handleUserSearchChange(event) {
     this.setState({ userSearchId: event.target.value })
+  }
+
+  handleCourseSearchChange(event) {
+    this.setState({ courseSearchId: event.target.value })
   }
 
 
@@ -33,17 +52,32 @@ class App extends Component {
       theUser = (<User userData={this.state.user} />);
     }
 
+    let theCourse = null;
+
+    if (this.state.courseFound) {
+      console.log(this.state.course)
+      theCourse = (<Course courseData={this.state.course} />);
+    }
+
     return (
       <div>
         <div>
           <p>Enter the user id below and click search</p>
-          <input type="text" name="id" onChange={(event) => this.handleSearchChange(event)} />
+          <input type="text" name="userId" onChange={(event) => this.handleUserSearchChange(event)} />
           <button value="Search" onClick={(event) => this.searchUser(event)} />
           <br/>
           <br/>          
           <p>Selected User</p>
           {theUser}
-
+        </div>
+        <div>
+          <p>Enter the course id below and click search</p>
+          <input type="text" name="courseId" onChange={(event) => this.handleCourseSearchChange(event)} />
+          <button value="Search" onClick={(event) => this.searchCourse(event)} />
+          <br/>
+          <br/>          
+          <p>Selected Course</p>
+          {theCourse}
         </div>
       </div>
 
