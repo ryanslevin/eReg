@@ -8,7 +8,8 @@ function User(props) {
         border: '2px solid black',
         shadow: '2px 2px black',
         padding: '10px',
-        margin: '15px'
+        margin: '15px',
+        display: 'inline-block'
     }
 
     return (

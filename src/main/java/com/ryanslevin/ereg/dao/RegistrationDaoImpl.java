@@ -25,6 +25,8 @@ public class RegistrationDaoImpl implements RegistrationDao {
         //Get session
         Session session = entityManager.unwrap(Session.class);
 
+        System.out.println(registration);
+
         session.save(registration);
 
     }

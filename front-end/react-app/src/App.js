@@ -32,14 +32,18 @@ class App extends Component {
       .catch(console.log)
   }
 
-
-
   handleUserSearchChange(event) {
     this.setState({ userSearchId: event.target.value })
   }
 
   handleCourseSearchChange(event) {
     this.setState({ courseSearchId: event.target.value })
+  }
+
+  handleRegistration = () => {
+    fetch('http://localhost:8080/api/registration/register?courseId='+this.state.course.id+'&userId='+this.state.user.id, {
+      method: 'POST',
+    })
   }
 
 
@@ -59,26 +63,46 @@ class App extends Component {
       theCourse = (<Course courseData={this.state.course} />);
     }
 
+    const buttonStyle = {
+      width: '50px'
+    }
+
+    const containerStyle = {
+      margin: '100px',
+      columnCount: '2',
+      columnFill: 'auto'
+    }
+
     return (
       <div>
-        <div>
-          <p>Enter the user id below and click search</p>
-          <input type="text" name="userId" onChange={(event) => this.handleUserSearchChange(event)} />
-          <button value="Search" onClick={(event) => this.searchUser(event)} />
-          <br/>
-          <br/>          
-          <p>Selected User</p>
-          {theUser}
+        <div style={containerStyle}>
+          <div>
+            <p>Enter the user id below and click search</p>
+            <input type="text" name="userId" onChange={(event) => this.handleUserSearchChange(event)} />
+            <button value="Search" onClick={(event) => this.searchUser(event)}>Search</button>
+            <br />
+            <br />
+
+          </div>
+          <div>
+            <p>Enter the course id below and click search</p>
+            <input type="text" name="courseId" onChange={(event) => this.handleCourseSearchChange(event)} />
+            <button value="Search" onClick={(event) => this.searchCourse(event)}>Search</button>
+            <br />
+            <br />
+          </div>
         </div>
-        <div>
-          <p>Enter the course id below and click search</p>
-          <input type="text" name="courseId" onChange={(event) => this.handleCourseSearchChange(event)} />
-          <button value="Search" onClick={(event) => this.searchCourse(event)} />
-          <br/>
-          <br/>          
-          <p>Selected Course</p>
-          {theCourse}
+        <div style={containerStyle}>
+          <div>
+            <p>Selected User</p>
+            {theUser}
+          </div>
+          <div>
+            <p>Selected Course</p>
+            {theCourse}
+          </div>
         </div>
+        <button value="Register" onClick={(event) => this.handleRegistration(event)}>Register</button>
       </div>
 
     )
