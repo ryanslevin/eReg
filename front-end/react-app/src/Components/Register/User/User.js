@@ -2,7 +2,6 @@ import React from 'react';
 
 function User(props) {
 
-
     const style = {
         width: '200px',
         border: '2px solid black',
