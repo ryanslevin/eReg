@@ -21,8 +21,21 @@ class UpdateUserForm extends Component {
         })
     }
 
-    handleFormSubmission() {
+    handleLastNameChange(event) {
+        this.setState({
+            lastName: event.target.value,
+            changed: true
+        })
+    }
 
+    handleGenderChange(event) {
+        this.setState({
+            gender: event.target.value,
+            changed: true
+        })
+    }    
+
+    handleFormSubmission() {
         let requestBody = JSON.stringify({
             id: this.state.id,
             firstName: this.state.firstName,
@@ -35,24 +48,24 @@ class UpdateUserForm extends Component {
 
         fetch('http://localhost:8080/api/user', {
             method: 'PUT',
-            headers: {'Content-Type': 'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             body: requestBody
-          })
+        })
     }
-
-
-
-
+    
     render() {
         return (
             <div>
                 <form>
                     <p>First Name:</p>
-                    <input type='text' onChange={ (event) => this.handleFirstNameChange(event)} defaultValue={this.state.firstName}/>
+                    <input type='text' onChange={(event) => this.handleFirstNameChange(event)}
+                        defaultValue={this.state.firstName} />
                     <p>Last Name:</p>
-                    <input type='text' value={this.state.lastName}/>
+                    <input type='text' onChange={(event) => this.handleLastNameChange(event)}
+                        defaultValue={this.state.lastName} />
                     <p>Gender:</p>
-                    <input type='text' value={this.state.gender}/>
+                    <input type='text' onChange={(event) => this.handleGenderChange(event)}
+                        defaultValue={this.state.gender} />
                 </form>
                 <button onClick={(event) => this.handleFormSubmission()}>Update</button>
             </div>
