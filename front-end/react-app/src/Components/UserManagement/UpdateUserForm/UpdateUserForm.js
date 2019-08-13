@@ -35,6 +35,7 @@ class UpdateUserForm extends Component {
 
         fetch('http://localhost:8080/api/user', {
             method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
             body: requestBody
           })
     }

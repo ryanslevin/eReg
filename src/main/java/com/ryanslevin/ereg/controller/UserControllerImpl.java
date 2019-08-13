@@ -60,7 +60,8 @@ public class UserControllerImpl implements UserController {
     // API endpoint to update a user, takes a User object as a RequestBody
     // Example endpoint: http://localhost:8080/user
     @Override
-    @PutMapping("/user")
+    @PutMapping(value="/user", consumes = "application/json")
+    @CrossOrigin(origins = "http://localhost:3000")
     public void updateUser(@RequestBody User user) {
         userService.updateUser(user);
     }
