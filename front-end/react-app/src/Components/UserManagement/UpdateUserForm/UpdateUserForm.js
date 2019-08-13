@@ -35,6 +35,14 @@ class UpdateUserForm extends Component {
         })
     }    
 
+    handleBirthDateChange(event) {
+        this.setState({
+            birthDate: event.target.value,
+            changed: true
+        })
+    } 
+
+
     handleFormSubmission() {
         let requestBody = JSON.stringify({
             id: this.state.id,
@@ -52,7 +60,7 @@ class UpdateUserForm extends Component {
             body: requestBody
         })
     }
-    
+
     render() {
         return (
             <div>
@@ -63,6 +71,9 @@ class UpdateUserForm extends Component {
                     <p>Last Name:</p>
                     <input type='text' onChange={(event) => this.handleLastNameChange(event)}
                         defaultValue={this.state.lastName} />
+                    <p>Birth Date:</p>
+                    <input type='date' onChange={(event) => this.handleBirthDateChange(event)}
+                        defaultValue={this.state.birthDate}/>                          
                     <p>Gender:</p>
                     <input type='text' onChange={(event) => this.handleGenderChange(event)}
                         defaultValue={this.state.gender} />
