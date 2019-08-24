@@ -37,6 +37,7 @@ public class CourseControllerImpl implements CourseController {
     @Override
     @GetMapping("/course")
     public Course getCourse(@RequestParam int id) {
+        System.out.println(courseService.getCourse(id));
         return courseService.getCourse(id);
     }
 

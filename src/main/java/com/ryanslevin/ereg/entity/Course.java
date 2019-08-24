@@ -10,6 +10,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import com.ryanslevin.ereg.util.SqlTimeDeserializer;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+
 @Entity
 @Table(name="courses")
 public class Course {
@@ -29,9 +37,12 @@ public class Course {
     private Date endDate;
 
     @Column(name="start_time")
+    //@JsonDeserialize(using=SqlTimeDeserializer.class)
     private Time startTime;
 
     @Column(name="end_time")
+    //@JsonDeserialize(using=SqlTimeDeserializer.class)
+    @DateTimeFormat()
     private Time endTime;
 
     @Column(name="location")
