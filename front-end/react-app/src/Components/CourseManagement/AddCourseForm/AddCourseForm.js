@@ -1,78 +1,125 @@
 import React, { Component } from 'react';
 
-class AddUserForm extends Component {
+class AddCourseForm extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            firstName: null,
-            lastName: null,
-            gender: null,
-            birthDate: null
+            name: null,
+            startDate: null,
+            endDate: null,
+            startTime: null,
+            endTime: null,
+            location: null,
+            instructor: null
         }
     }
 
-    handleFirstNameChange(event) {
+    handleNameChange(event) {
         this.setState({
-            firstName: event.target.value,
+            name: event.target.value,
+            changed: true
         })
     }
 
-    handleLastNameChange(event) {
+    handleStartDateChange(event) {
         this.setState({
-            lastName: event.target.value,
+            startDate: event.target.value,
+            changed: true
         })
     }
 
-    handleBirthDateChange(event) {
+    handleEndDateChange(event) {
         this.setState({
-            birthDate: event.target.value,
+            endDate: event.target.value,
+            changed: true
         })
     }    
 
-    handleGenderChange(event) {
+    handleStartTimeChange(event) {
         this.setState({
-            gender: event.target.value,
+            startTime: event.target.value+":00",
+            changed: true
         })
-    }    
+    }
+
+    handleEndTimeChange(event) {
+        this.setState({
+            endTime: event.target.value+":00",
+            changed: true
+        })
+    }
+
+    handleLocationChange(event) {
+        this.setState({
+            location: event.target.value,
+            changed: true
+        })
+    }
+
+    handleInstructorChange(event) {
+        this.setState({
+            instructor: event.target.value,
+            changed: true
+        })
+    }
 
     handleFormSubmission() {
         let requestBody = JSON.stringify({
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            birthDate: this.state.birthDate,
-            gender: this.state.gender
+            name: this.state.name,
+            startDate: this.state.startDate,
+            endDate: this.state.endDate,
+            startTime: this.state.startTime,
+            endTime: this.state.endTime,
+            location: this.state.location,
+            instructor: this.state.instructor
         })
         console.log(requestBody)
 
-        fetch('http://localhost:8080/api/user', {
+        fetch('http://localhost:8080/api/course', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: requestBody
         })
 
-        alert("New user added!")
+        alert(this.state.name+" added as a new course!")
+        this.setState({
+            name: null,
+            startDate: null,
+            endDate: null,
+            startTime: null,
+            endTime: null,
+            location: null,
+            instructor: null
+        })
+
 
     }
-    
+
     render() {
         return (
             <div>
                 <form>
-                    <p>First Name:</p>
-                    <input type='text' onChange={(event) => this.handleFirstNameChange(event)}/>
-                    <p>Last Name:</p>
-                    <input type='text' onChange={(event) => this.handleLastNameChange(event)}/>
-                    <p>Birth Date:</p>
-                    <input type='date' onChange={(event) => this.handleBirthDateChange(event)}/>                    
-                    <p>Gender:</p>
-                    <input type='text' onChange={(event) => this.handleGenderChange(event)}/>
+                    <p>Course Name:</p>
+                    <input type='text' onChange={(event) => this.handleNameChange(event)} />
+                    <p>Start Date:</p>
+                    <input type='date' onChange={(event) => this.handleStartDateChange(event)}/>
+                    <p>End Date:</p>
+                    <input type='date' onChange={(event) => this.handleEndDateChange(event)}/>
+                    <p>Start Time:</p>
+                    <input type='time' onChange={(event) => this.handleStartTimeChange(event)}/>                        
+                    <p>End Time:</p>
+                    <input type='time' onChange={(event) => this.handleEndTimeChange(event)}/>
+                    <p>Location:</p>
+                    <input type='text' onChange={(event) => this.handleLocationChange(event)}/>
+                    <p>Instructor:</p>
+                    <input type='text' onChange={(event) => this.handleInstructorChange(event)}/>
                 </form>
-                <button onClick={(event) => this.handleFormSubmission()}>Add User</button>
+                <button onClick={(event) => this.handleFormSubmission()}>Add New Course</button>
             </div>
         )
 
     }
 }
 
-export default AddUserForm;
+export default AddCourseForm;
