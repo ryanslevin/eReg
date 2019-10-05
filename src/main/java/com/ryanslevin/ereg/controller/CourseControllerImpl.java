@@ -2,6 +2,8 @@ package com.ryanslevin.ereg.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.ryanslevin.ereg.entity.Course;
 import com.ryanslevin.ereg.service.CourseService;
 
@@ -46,7 +48,7 @@ public class CourseControllerImpl implements CourseController {
     // Endpoint: http://localhost:8080/api/course
     @Override
     @PostMapping("/course")
-    public void addCourse(@RequestBody Course course) {
+    public void addCourse(@Valid @RequestBody Course course) {
         courseService.addCourse(course);
 
     }
@@ -55,7 +57,7 @@ public class CourseControllerImpl implements CourseController {
     // Endpoint: http://localhost:8080/api/course    
     @Override
     @PutMapping("/course")
-    public void updateCourse(@RequestBody Course course) {
+    public void updateCourse(@Valid @RequestBody Course course) {
         courseService.updateCourse(course);
 
     }

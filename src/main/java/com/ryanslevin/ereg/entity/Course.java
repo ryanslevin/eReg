@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -28,27 +30,33 @@ public class Course {
     private int id;
 
     @Column(name="name")
+    @NotEmpty(message = "Please provide a course name")
     private String name;
 
     @Column(name="start_date")
+    @NotNull(message = "Please provide a start date")
     private Date startDate;
 
     @Column(name="end_date")
+    @NotNull(message = "Please provide an end date")
     private Date endDate;
 
     @Column(name="start_time")
-    //@JsonDeserialize(using=SqlTimeDeserializer.class)
+    @DateTimeFormat()
+    @NotNull(message = "Please provide a start time")
     private Time startTime;
 
     @Column(name="end_time")
-    //@JsonDeserialize(using=SqlTimeDeserializer.class)
     @DateTimeFormat()
+    @NotNull(message = "Please provide an end time")
     private Time endTime;
 
     @Column(name="location")
+    @NotEmpty(message = "Please provide a location")
     private String location;
 
     @Column(name="instructor")
+    @NotEmpty(message = "Please provide an instructor")
     private String instructor;
 
     public Course() {

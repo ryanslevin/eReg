@@ -1,5 +1,15 @@
 import React, { Component } from 'react';
 
+/*
+This is the AddCourseForm component that is part of the CourseManagement component.
+
+Loads an empty course form and sets the state when the fields change in value.
+
+After filling out the fields a user will press the "Add New Course" button, a POST request
+will be sent to the course API with the new course details as the request body.
+
+*/
+
 class AddCourseForm extends Component {
 
     constructor(props) {
@@ -36,6 +46,8 @@ class AddCourseForm extends Component {
         })
     }    
 
+    /*Appends ":00" to the end of the value from the field, allows the API
+    to convert it to a java.sql.time object*/
     handleStartTimeChange(event) {
         this.setState({
             startTime: event.target.value+":00",
@@ -43,6 +55,8 @@ class AddCourseForm extends Component {
         })
     }
 
+    /*Appends ":00" to the end of the value from the field, allows the API
+    to convert it to a java.sql.time object*/
     handleEndTimeChange(event) {
         this.setState({
             endTime: event.target.value+":00",
@@ -83,6 +97,7 @@ class AddCourseForm extends Component {
         })
 
         alert(this.state.name+" added as a new course!")
+
         this.setState({
             name: null,
             startDate: null,
@@ -95,6 +110,9 @@ class AddCourseForm extends Component {
 
 
     }
+
+
+    
 
     render() {
         return (

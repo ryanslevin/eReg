@@ -41,8 +41,6 @@ class CourseManagement extends Component {
     })
   }
 
-
-
   render() {
 
     const containerStyle = {
