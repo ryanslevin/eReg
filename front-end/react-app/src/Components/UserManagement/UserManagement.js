@@ -45,20 +45,6 @@ class UserManagement extends Component {
 
   render() {
 
-    const containerStyle = {
-      margin: '100px'
-    }
-
-    const columnContainerStyle = {
-      columnCount: '2',
-      columnFill: 'auto',
-      margin: 'auto'
-    }
-
-    const formDivStyle = {
-      margin: '100px',
-    }
-
     let searchForm = null;
     let addForm = null;
     let updateForm = null;
@@ -88,8 +74,8 @@ class UserManagement extends Component {
     }
 
     return (
-      <div style={containerStyle}>
-        <div style={columnContainerStyle}>
+      <div>
+        <div>
           <div>
           <button onClick={(event) => this.handleAddUserActive(event)}>Add New User</button>
           </div>
@@ -97,7 +83,7 @@ class UserManagement extends Component {
           <button onClick={(event) => this.handleUpdateUserActive(event)}>Update Existing User</button>
           </div>
         </div>
-        <div style={formDivStyle}>
+        <div>
         {searchForm}
         {addForm}
         {updateForm}

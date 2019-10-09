@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+
 /*
 This is the AddCourseForm component that is part of the CourseManagement component.
 
@@ -44,13 +47,13 @@ class AddCourseForm extends Component {
             endDate: event.target.value,
             changed: true
         })
-    }    
+    }
 
     /*Appends ":00" to the end of the value from the field, allows the API
     to convert it to a java.sql.time object*/
     handleStartTimeChange(event) {
         this.setState({
-            startTime: event.target.value+":00",
+            startTime: event.target.value + ":00",
             changed: true
         })
     }
@@ -59,7 +62,7 @@ class AddCourseForm extends Component {
     to convert it to a java.sql.time object*/
     handleEndTimeChange(event) {
         this.setState({
-            endTime: event.target.value+":00",
+            endTime: event.target.value + ":00",
             changed: true
         })
     }
@@ -96,7 +99,7 @@ class AddCourseForm extends Component {
             body: requestBody
         })
 
-        alert(this.state.name+" added as a new course!")
+        alert(this.state.name + " added as a new course!")
 
         this.setState({
             name: null,
@@ -112,28 +115,45 @@ class AddCourseForm extends Component {
     }
 
 
-    
+
 
     render() {
         return (
             <div>
-                <form>
-                    <p>Course Name:</p>
-                    <input type='text' onChange={(event) => this.handleNameChange(event)} />
-                    <p>Start Date:</p>
-                    <input type='date' onChange={(event) => this.handleStartDateChange(event)}/>
-                    <p>End Date:</p>
-                    <input type='date' onChange={(event) => this.handleEndDateChange(event)}/>
-                    <p>Start Time:</p>
-                    <input type='time' onChange={(event) => this.handleStartTimeChange(event)}/>                        
-                    <p>End Time:</p>
-                    <input type='time' onChange={(event) => this.handleEndTimeChange(event)}/>
-                    <p>Location:</p>
-                    <input type='text' onChange={(event) => this.handleLocationChange(event)}/>
-                    <p>Instructor:</p>
-                    <input type='text' onChange={(event) => this.handleInstructorChange(event)}/>
-                </form>
-                <button onClick={(event) => this.handleFormSubmission()}>Add New Course</button>
+                <Form>
+                    <Form.Group>
+                        <Form.Label>Course Name:</Form.Label>
+                        <Form.Control type='text' onChange={(event) => this.handleNameChange(event)} />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Start Date:</Form.Label>
+                        <Form.Control type='date' onChange={(event) => this.handleStartDateChange(event)} />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>End Date:</Form.Label>
+                        <Form.Control type='date' onChange={(event) => this.handleEndDateChange(event)} />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Start Time:</Form.Label>
+                        <Form.Control type='time' onChange={(event) => this.handleStartTimeChange(event)} />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>End Time:</Form.Label>
+                        <Form.Control type='time' onChange={(event) => this.handleEndTimeChange(event)} />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Location:</Form.Label>
+                        <Form.Control type='text' onChange={(event) => this.handleLocationChange(event)} />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Instructor:</Form.Label>
+                        <Form.Control type='text' onChange={(event) => this.handleInstructorChange(event)} />
+                    </Form.Group>
+                    <Form.Group>
+                        <Button onClick={(event) => this.handleFormSubmission()}>Add New Course</Button>
+                    </Form.Group>
+                </Form>
+
             </div>
         )
 

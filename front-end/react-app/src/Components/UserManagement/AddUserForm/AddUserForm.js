@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import Button from 'react-bootstrap/button';
+
 class AddUserForm extends Component {
 
     constructor(props) {
@@ -68,7 +70,7 @@ class AddUserForm extends Component {
                     <p>Gender:</p>
                     <input type='text' onChange={(event) => this.handleGenderChange(event)}/>
                 </form>
-                <button onClick={(event) => this.handleFormSubmission()}>Add User</button>
+                <Button variant="primary" onClick={(event) => this.handleFormSubmission()}>Add User</Button>
             </div>
         )
 
